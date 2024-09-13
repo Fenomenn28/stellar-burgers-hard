@@ -46,40 +46,8 @@ const App = () => {
         <Route element={<ProtectedRoute onlyUnAuth={false} />}>
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/orders' element={<ProfileOrders />} />
-          <Route
-            path='/profile/orders/:number'
-            element={
-              <Modal
-                title={`Заказ #${location.pathname.match(/\d+/)}`}
-                onClose={() => {
-                  history.back();
-                }}
-              >
-                <OrderInfo />
-              </Modal>
-            }
-          />
         </Route>
         <Route path='*' element={<NotFound404 />} />
-        <Route
-          path='/feed/:number'
-          element={
-            <Modal
-              title={`Заказ #${location.pathname.match(/\d+/)}`}
-              onClose={() => history.back()}
-            >
-              <OrderInfo />
-            </Modal>
-          }
-        />
-        <Route
-          path='/ingredients/:id'
-          element={
-            <Modal title='Детали ингредиента' onClose={() => history.back()}>
-              <IngredientDetails />
-            </Modal>
-          }
-        />
       </Routes>
       {background && (
         <Routes>

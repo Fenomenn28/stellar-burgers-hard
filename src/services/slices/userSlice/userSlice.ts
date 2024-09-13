@@ -45,10 +45,7 @@ export const loginUser = createAsyncThunk(
 
 export const getUser = createAsyncThunk('user/getUser', getUserApi);
 
-export const registerUser = createAsyncThunk(
-  'user/regUser',
-  async (registerData: TRegisterData) => await registerUserApi(registerData)
-);
+export const registerUser = createAsyncThunk('user/regUser', registerUserApi);
 
 export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
   logoutApi().then(() => {
