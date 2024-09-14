@@ -56,7 +56,7 @@ const App = () => {
             element={
               <Modal
                 title={`Заказ #${location.pathname.match(/\d+/)}`}
-                onClose={() => navigate('/', { replace: true })}
+                onClose={() => navigate(background, { replace: true })}
               >
                 <OrderInfo />
               </Modal>
@@ -67,7 +67,7 @@ const App = () => {
             element={
               <Modal
                 title='Детали ингредиента'
-                onClose={() => navigate('/', { replace: true })}
+                onClose={() => navigate(background, { replace: true })}
               >
                 <IngredientDetails />
               </Modal>
@@ -79,7 +79,7 @@ const App = () => {
               element={
                 <Modal
                   title={`Заказ #${location.pathname.match(/\d+/)}`}
-                  onClose={() => navigate('/', { replace: true })}
+                  onClose={() => navigate(background, { replace: true })}
                 >
                   <OrderInfo />
                 </Modal>
