@@ -51,7 +51,7 @@ export const constructorSlice = createSlice({
       },
       prepare: (ingredient: TIngredient) => {
         const id = nanoid();
-        return { payload: { ...ingredient, id } };
+        return { payload: { ...ingredient, id: id } };
       }
     },
     removeIngredient: (state, action: PayloadAction<string>) => {
@@ -99,6 +99,7 @@ export const constructorSlice = createSlice({
         state.orderRequest = false;
         state.orderModalData = action.payload.order;
         state.error = null;
+        console.log(action.payload);
       })
       .addCase(orderBurger.rejected, (state, action) => {
         state.loading = false;

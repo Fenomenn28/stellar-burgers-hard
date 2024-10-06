@@ -21,7 +21,7 @@ type TUserState = {
   userOrders: TOrder[];
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isAuthChecked: false,
   isAuthenticated: false,
   data: null,
@@ -102,6 +102,7 @@ export const userSlice = createSlice({
       .addCase(getUser.rejected, (state, action) => {
         state.isAuthChecked = true;
         state.isAuthenticated = false;
+        state.loginUserError = action.error.message as string;
         state.loginUserRequest = false;
       })
       .addCase(registerUser.pending, (state) => {
@@ -111,12 +112,13 @@ export const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
-        state.data = action.payload.user;
         state.loginUserError = null;
+        state.data = action.payload.user;
         state.loginUserRequest = false;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isAuthenticated = false;
+        state.loginUserRequest = false;
         state.loginUserError = action.error.message as string;
         state.loginUserRequest = false;
       })
